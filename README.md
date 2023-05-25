@@ -1,1 +1,1 @@
-# versatile-text-editor
+# Versatile Text Editor

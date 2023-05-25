@@ -6,12 +6,12 @@ const { InjectManifest } = require('workbox-webpack-plugin');
 module.exports = () => {
   return {
     mode: 'development',
-    // Entry point for files
+    // This is Entry point for files
     entry: {
       main: './src/js/index.js',
       install: './src/js/install.js',
     },
-    // Output for our bundles
+    // Here we have our our utput for our bundles, and because we have more than one entry point, we use [name]. as a placeholder for their names
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
@@ -23,13 +23,13 @@ module.exports = () => {
         title: 'Versatile Text Editor'
       }),
      
-      // Injects our custom service worker
+      // This is where we inject our custom service worker that here we have decided to use InjectManifest
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'src-sw.js',
       }),
 
-      // Creates a manifest.json file.
+      // The WebpackPwaManifest is responsible for creating a manifest.json file.
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
@@ -60,7 +60,7 @@ module.exports = () => {
         {
           test: /\.m?js$/,
           exclude: /node_modules/,
-          // We use babel-loader in order to use ES6.
+          // We use babel-loader in order to use ES6, and it is responsible to make our code compatible with lower versions (ES5)
           use: {
             loader: 'babel-loader',
             options: {

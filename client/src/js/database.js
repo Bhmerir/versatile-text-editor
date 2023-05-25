@@ -1,5 +1,5 @@
 import { openDB } from 'idb';
-
+//This function opens our database if exists if no, it makes it.
 const initdb = async () =>
   openDB('jate', 1, {
     upgrade(db) {
@@ -12,7 +12,7 @@ const initdb = async () =>
     },
   });
 
-// TODO: Add logic to a method that accepts some content and adds it to the database
+// This function adds our content(text) into our indexedDB called jate
 export const putDb = async (content) => {
   console.log('PUT to the database');
   const jateDb = await openDB('jate', 1);
@@ -23,7 +23,7 @@ export const putDb = async (content) => {
   console.log('Data saved to the database', result);
 };
 
-// TODO: Add logic for a method that gets all the content from the database
+// This function get our content(text) from our indexedDB called jate
 export const getDb = async () => {
   console.log('PUT to the database');
   const jateDb = await openDB('jate', 1);
